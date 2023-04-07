@@ -6,11 +6,8 @@ using KeyAttribute = System.ComponentModel.DataAnnotations.KeyAttribute;
 using RequiredAttribute = System.ComponentModel.DataAnnotations.RequiredAttribute;
 
 namespace OrganizationProject.Models;
-[Table("tb_m_department")]
-public class Department
+public class Account
 {
-    [Key, Column("id")]
     public int Id { get; set; }
-    [Required, Column("name"), MaxLength(255)]
-    public int Name { get; set; }
+    public string Password { get; set; }
 }

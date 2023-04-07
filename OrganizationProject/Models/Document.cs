@@ -6,11 +6,13 @@ using KeyAttribute = System.ComponentModel.DataAnnotations.KeyAttribute;
 using RequiredAttribute = System.ComponentModel.DataAnnotations.RequiredAttribute;
 
 namespace OrganizationProject.Models;
-[Table("tb_m_department")]
-public class Department
+public class Document
 {
-    [Key, Column("id")]
     public int Id { get; set; }
-    [Required, Column("name"), MaxLength(255)]
-    public int Name { get; set; }
+    public string Name { get; set; }
+    public int AccountId { get; set; }
+    public DateTime Date { get; set; }
+    public string File { get; set; }
+    public string DocumentType { get; set; }
+    public string Information { get; set; }
 }

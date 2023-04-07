@@ -7,10 +7,10 @@ using RequiredAttribute = System.ComponentModel.DataAnnotations.RequiredAttribut
 
 namespace OrganizationProject.Models;
 [Table("tb_m_department")]
-public class Department
+public class DocumentType
 {
     [Key, Column("id")]
     public int Id { get; set; }
-    [Required, Column("name"), MaxLength(255)]
-    public int Name { get; set; }
+    [Required, Column("type"), MaxLength(255)]
+    public int Type { get; set; }
 }

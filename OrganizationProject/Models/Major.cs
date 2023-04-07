@@ -6,8 +6,8 @@ using KeyAttribute = System.ComponentModel.DataAnnotations.KeyAttribute;
 using RequiredAttribute = System.ComponentModel.DataAnnotations.RequiredAttribute;
 
 namespace OrganizationProject.Models;
-[Table("tb_m_department")]
-public class Department
+[Table("tb_m_major")]
+public class Major
 {
     [Key, Column("id")]
     public int Id { get; set; }
