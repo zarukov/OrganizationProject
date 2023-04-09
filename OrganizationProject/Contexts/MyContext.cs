@@ -14,10 +14,8 @@ public class MyContext : DbContext
     public DbSet<Department> Departments { get; set; }
     public DbSet<DocumentType> DocumentTypes { get; set; }
     public DbSet<Finance> Finances { get; set; }
-    public DbSet<Major> Majors { get; set; }
     public DbSet<Member> Members { get; set; }
     public DbSet<Role> Roles { get; set; }
-    public DbSet<Title> Titles { get; set; }
     public DbSet<WorkProgram> WorkPrograms { get; set; }
 
     protected override void OnModelCreating (ModelBuilder modelBuilder)
@@ -27,5 +25,11 @@ public class MyContext : DbContext
         { 
             m.PhoneNumber, m.Email
         }).IsUnique();
+        //Relasi one Member ke one Account + menjadi Primary Key
+        modelBuilder.Entity<Member>()
+                .HasOne(m => m.Account)
+                .WithOne(a => a.Member)
+                .HasForeignKey<Account>(fk => fk.MemberNIM);
     }
+
 }
