@@ -1,4 +1,4 @@
-namespace Organization_ClientSide.Models
+namespace ClientSide.Models
 {
     public class ErrorViewModel
     {
