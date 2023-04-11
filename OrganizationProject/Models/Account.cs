@@ -1,20 +1,21 @@
 ﻿using MessagePack;
 using Microsoft.Build.Framework;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using KeyAttribute = System.ComponentModel.DataAnnotations.KeyAttribute;
 using RequiredAttribute = System.ComponentModel.DataAnnotations.RequiredAttribute;
+using System.Text.Json.Serialization;
 
 namespace OrganizationProject.Models;
+[Table("tb_m_account")]
 public class Account
 {
     [Key, Column("member_nim", TypeName = "nchar(5)")]
-    public int MemberNIM { get; set; }
+    public string MemberNIM { get; set; }
     [Required, Column("password"), MaxLength(255)]
     public string Password { get; set; }
 
-    //cardinality
+    //cardinalitty
     [JsonIgnore]
     public ICollection<AccountRole>? AccountRoles { get; set; }
     [JsonIgnore]

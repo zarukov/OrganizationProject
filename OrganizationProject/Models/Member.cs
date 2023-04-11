@@ -1,24 +1,23 @@
 ﻿using MessagePack;
 using Microsoft.Build.Framework;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using KeyAttribute = System.ComponentModel.DataAnnotations.KeyAttribute;
 using RequiredAttribute = System.ComponentModel.DataAnnotations.RequiredAttribute;
+using System.Text.Json.Serialization;
 
 namespace OrganizationProject.Models;
+[Table("tb_m_member")]
 public class Member
 {
-    [Key, Column("student_number", TypeName ="nchar(5)")]
-    public int NIM { get; set; }
+    [Key, Column("student_member", TypeName = "nchar(5)")]
+    public string NIM { get; set; }
     [Required, Column("name"), MaxLength(255)]
     public string Name { get; set; }
-    [Required, Column("member_id", TypeName ="nchar(8)")]
-    public int MemberId { get; set; }
     [Required, Column("major_name"), MaxLength(255)]
     public string MajorName { get; set; }
     [Required, Column("birth_date")]
-    public DateOnly BirthDate { get; set; }
+    public DateTime BirthDate { get; set; }
     [Required, Column("title_name"), MaxLength(255)]
     public string TitleName { get; set; }
     [Required, Column("phone_number"), MaxLength(255)]

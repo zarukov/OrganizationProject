@@ -1,24 +1,25 @@
 ﻿using MessagePack;
 using Microsoft.Build.Framework;
-using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using KeyAttribute = System.ComponentModel.DataAnnotations.KeyAttribute;
 using RequiredAttribute = System.ComponentModel.DataAnnotations.RequiredAttribute;
+using System.Text.Json.Serialization;
 
 namespace OrganizationProject.Models;
+[Table("tb_m_workprogram")]
 public class WorkProgram
 {
     [Key, Column("id")]
-    public string Id { get; set; }
+    public int Id { get; set; }
     [Required, Column("name"), MaxLength(255)]
     public string Name { get; set; }
-    [Required, Column("member_nim", TypeName ="nchar(5)")]
-    public int MemberNIM { get; set; }
-    [Required, Column("department_id")]
+    [Required, Column("member_nim", TypeName = "nchar(5)")]
+    public string MemberNIM { get; set; }
+    [Required, Column("department id")]
     public int DepartmentId { get; set; }
     [Required, Column("start_date")]
-    public DateOnly StartDate { get; set; }
+    public DateTime StartDate { get; set; }
     [Required, Column("end_date")]
     public DateTime EndDate { get; set; }
     [Required, Column("budget")]
@@ -28,7 +29,9 @@ public class WorkProgram
 
     //cardinality
     [JsonIgnore]
+    [ForeignKey(nameof(MemberNIM))]
     public Account? Account { get; set; }
     [JsonIgnore]
+    [ForeignKey(nameof(DepartmentId))]
     public Department? Department { get; set; }
 }

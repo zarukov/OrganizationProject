@@ -30,6 +30,34 @@ public class MyContext : DbContext
                 .HasOne(m => m.Account)
                 .WithOne(a => a.Member)
                 .HasForeignKey<Account>(fk => fk.MemberNIM);
+        //tambah value ke Role
+        modelBuilder.Entity<Role>()
+            .HasData(
+            new Role
+            {
+                Id = 1,
+                Name = "Admin"
+            },
+            new Role
+            {
+                Id = 2,
+                Name = "Leader"
+            },
+            new Role
+            {
+                Id = 3,
+                Name = "Secretary"
+            },
+            new Role
+            {
+                Id = 4,
+                Name = "Treasurer"
+            },
+            new Role
+            {
+                Id = 5,
+                Name = "Department"
+            });
     }
 
 }
